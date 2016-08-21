@@ -18,4 +18,12 @@ public class UserService {
         }
         return false;
     }
+
+    public Boolean authenticateUser(String username, String password){
+        User u = userRepository.findUserByUsername(username);
+        if (u != null && u.getPassword().equals(password)){
+                return true;
+            }
+        return false;
+    }
 }
