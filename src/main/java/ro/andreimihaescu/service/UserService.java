@@ -11,12 +11,12 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Boolean createUser(String username, String password){
+    public Long createUser(String username, String password){
         if (userRepository.findUserByUsername(username) == null){
-            userRepository.save(new User(username, password));
-            return true;
+            User u  =userRepository.save(new User(username, password));
+            return u.getId();
         }
-        return false;
+        return 0L;
     }
 
     public Boolean authenticateUser(String username, String password){

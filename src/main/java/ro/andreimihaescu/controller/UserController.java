@@ -19,7 +19,7 @@ public class UserController {
     private final static Logger LOGGER = Logger.getLogger(UserController.class);
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Boolean createUser(@RequestBody UserRequest userRequest) {
+    public Long createUser(@RequestBody UserRequest userRequest) {
         LOGGER.info(String.format("Attempted to create user %s on microservice", userRequest.getUsername()));
         return userService.createUser(userRequest.getUsername(), userRequest.getPassword());
     }
